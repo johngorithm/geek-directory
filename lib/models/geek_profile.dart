@@ -1,0 +1,39 @@
+class GeekProfile {
+  int followers;
+  int following;
+  String name;
+  String username;
+  String company;
+  String avatarUrl;
+  int publicRepos;
+  int publicGists;
+  String bio;
+  String location;
+
+  GeekProfile(
+      {this.username,
+        this.name,
+        this.followers,
+        this.following,
+        this.bio,
+        this.location,
+        this.company,
+        this.avatarUrl,
+        this.publicGists,
+        this.publicRepos});
+
+  factory GeekProfile.fromJSON(Map<String, dynamic> data) {
+    return GeekProfile(
+        followers: data['followers'],
+        following: data['following'],
+        name: data['name'],
+        username: data['login'],
+        avatarUrl: data['avatar_url'],
+        location: data['location'],
+        company: data['company'],
+        bio: data['bio'],
+        publicGists: data['public_gists'],
+        publicRepos: data['public_repos']
+    );
+  }
+}

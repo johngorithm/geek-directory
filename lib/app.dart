@@ -15,7 +15,7 @@ class _AppState extends State<App> {
       title: 'Geek Directory',
       theme: ThemeData.dark().copyWith(
         primaryColor: Color(0xFF2D239F),
-        scaffoldBackgroundColor: Color(0xFF313EBB),
+        scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
       initialRoute: '/',
