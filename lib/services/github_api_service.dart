@@ -1,0 +1,6 @@
+
+class GithubApiService {
+  int userId;
+
+
+}
