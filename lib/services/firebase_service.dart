@@ -1,0 +1,5 @@
+
+class FirebaseService {
+  int userId;
+
+}

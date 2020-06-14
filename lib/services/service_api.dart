@@ -26,7 +26,6 @@ class ServiceApi {
 
   }
 
-
   Future<void> get authenticatedUser async {
 
   }

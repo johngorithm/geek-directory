@@ -2,5 +2,4 @@
 class GithubApiService {
   int userId;
 
-
 }
