@@ -5,6 +5,6 @@ import 'package:geekdirectory/services/service_locator.dart';
 
 void main() {
 
-  serviceLocator.registerSingleton(ServiceApi());
+  serviceLocator.registerSingleton(ServiceAPI());
   runApp(App());
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/navigation/app_routes.dart';
 
 
@@ -13,9 +14,9 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Geek Directory',
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xFF2D239F),
-        scaffoldBackgroundColor: Colors.white,
+      theme: ThemeData.light().copyWith(
+        primaryColor: Palette.primary,
+        scaffoldBackgroundColor: Palette.secondary,
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
       initialRoute: '/',

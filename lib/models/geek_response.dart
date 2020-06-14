@@ -4,7 +4,7 @@ import 'package:http/http.dart';
 class GeekResponse {
   List<Geek> geeks;
 
-  GeekResponse({this.geeks});
+  GeekResponse(this.geeks);
 
   factory GeekResponse.fromJSON(Response response) {
     // todo: handle exceptions
@@ -16,7 +16,7 @@ class GeekResponse {
       _geeks = items.map((entry) => Geek.fromJSON(entry)).toList();
     }
 
-    return GeekResponse(geeks: _geeks);
+    return GeekResponse(_geeks);
   }
 }
 

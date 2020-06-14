@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:geekdirectory/exceptions/app_exceptions.dart';
+import 'package:geekdirectory/models/geek_profile_response.dart';
 import 'package:geekdirectory/models/geek_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:simple_logger/simple_logger.dart';
@@ -34,7 +35,7 @@ class GithubApiService {
     }
   }
 
-  Future<GeekResponse> loadGeekProfile(String username) async {
+  Future<GeekProfileResponse> loadGeekProfile(String username) async {
     try {
       final http.Response response = await http.get(
           '$baseUrl/users/$username?client_id=694ce0aafdfbc47ad583&client_secret=58709f1741ce72e8102a05b41412b38750bf1cd0',
@@ -46,7 +47,7 @@ class GithubApiService {
       throwOnFailureCodeException(response);
 
       /// If all is good, return response
-      return GeekResponse.fromJSON(response);
+      return GeekProfileResponse.fromJSON(response);
 
     } on http.ClientException catch(e) {
       throw SocketException("ClientException has occurred: $e");

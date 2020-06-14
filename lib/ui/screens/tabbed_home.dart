@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/navigation/fav_routes.dart';
 import 'package:geekdirectory/navigation/home_routes.dart';
 import 'package:geekdirectory/navigation/profile_routes.dart';
@@ -43,7 +44,7 @@ class _TabbedHomeState extends State<TabbedHome> {
             currentIndex: _currentTabIndex,
             onTap: handleTabChange,
             elevation: 0.0,
-            selectedItemColor: Colors.green,
+            selectedItemColor: Palette.primary,
             unselectedItemColor: Colors.black54,
             backgroundColor: Colors.transparent,
             showUnselectedLabels: true,
@@ -71,7 +72,7 @@ class _TabbedHomeState extends State<TabbedHome> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
+          backgroundColor: Palette.accentColor,
           elevation: 4,
           isExtended: true,
           onPressed: onFabClicked,
