@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 
+typedef ScreenRoute = Route<dynamic> Function(RouteSettings settings);
+
 class TabDestinationView extends StatefulWidget {
-  final Route<dynamic> Function(RouteSettings settings) onGenerateRoute;
+  final ScreenRoute onGenerateRoute;
   final String initialRoute;
 
   TabDestinationView({ Key key, this.onGenerateRoute, this.initialRoute}) : super(key: key);
@@ -10,6 +12,7 @@ class TabDestinationView extends StatefulWidget {
   @override
   _TabDestinationViewState createState() => _TabDestinationViewState();
 }
+
 
 class _TabDestinationViewState extends State<TabDestinationView> {
   @override
