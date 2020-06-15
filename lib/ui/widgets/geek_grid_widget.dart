@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:geekdirectory/models/geek_response.dart';
+import 'package:geekdirectory/models/geek.dart';
 import 'package:geekdirectory/ui/widgets/geek_card_widget.dart';
 
 class UsersGrid extends StatelessWidget {

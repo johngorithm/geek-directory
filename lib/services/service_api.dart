@@ -1,5 +1,6 @@
 
-import 'package:geekdirectory/models/geek_profile.dart';
+import 'package:geekdirectory/models/geek.dart';
+import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:geekdirectory/models/geek_profile_response.dart';
 import 'package:geekdirectory/models/geek_response.dart';
 import 'package:geekdirectory/services/github_api_service.dart';
@@ -17,7 +18,7 @@ class ServiceAPI {
     return geekResponse.geeks;
   }
 
-  Future<GeekProfile> loadDevProfile(String username) async {
+  Future<GeekDetail> loadDevProfile(String username) async {
     GeekProfileResponse geekResponse =  await githubService.loadGeekProfile(username);
     return geekResponse.profile;
   }

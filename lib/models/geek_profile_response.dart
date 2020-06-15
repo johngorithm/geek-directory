@@ -1,11 +1,11 @@
 
 import 'dart:convert';
 
-import 'package:geekdirectory/models/geek_profile.dart';
+import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:http/http.dart';
 
 class GeekProfileResponse {
-  GeekProfile profile;
+  GeekDetail profile;
 
   GeekProfileResponse(this.profile);
 
@@ -13,10 +13,10 @@ class GeekProfileResponse {
     // todo: handle exceptions
     Map<String, dynamic> data = jsonDecode(response.body);
 
-    GeekProfile _profile;
+    GeekDetail _profile;
     
     if (data != null) {
-      _profile = GeekProfile.fromJSON(data);
+      _profile = GeekDetail.fromJSON(data);
     }
 
     return GeekProfileResponse(_profile);

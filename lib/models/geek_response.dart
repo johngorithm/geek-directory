@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:geekdirectory/models/geek.dart';
 import 'package:http/http.dart';
 
 class GeekResponse {
@@ -17,19 +18,5 @@ class GeekResponse {
     }
 
     return GeekResponse(_geeks);
-  }
-}
-
-class Geek {
-  String username;
-  String avatarUrl;
-
-  Geek({this.avatarUrl, this.username});
-
-  factory Geek.fromJSON(Map<String, dynamic> data) {
-    return Geek(
-      username: data['login'],
-      avatarUrl: data['avatar_url'],
-    );
   }
 }

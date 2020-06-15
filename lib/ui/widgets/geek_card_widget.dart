@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
-import 'package:geekdirectory/models/geek_response.dart';
+import 'package:geekdirectory/models/geek.dart';
 
 
 
