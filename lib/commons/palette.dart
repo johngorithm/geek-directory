@@ -9,4 +9,6 @@ class Palette {
   static const white = Colors.white;
   static const black = Colors.black;
   static const transparent = Colors.transparent;
+
+  static const secondaryLight = Colors.blueAccent;
 }

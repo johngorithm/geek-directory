@@ -27,6 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    _homeModel.navigator = Navigator.of(context);
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeScreenModel>(
       create: (_) => _homeModel,
@@ -47,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }
 
               if (model.screenMessage != null) {
-                return Text('Unable to load data');
+                return Text(model.screenMessage);
               }
 
               return UsersGrid(model.geeks);
@@ -56,5 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _homeModel.dispose();
+    super.dispose();
   }
 }

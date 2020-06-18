@@ -27,7 +27,7 @@ class ServiceAPI {
     return geekResponse.geeks;
   }
 
-  Future<GeekDetail> loadDevProfile(String username) async {
+  Future<GeekDetail> loadGeekProfile(String username) async {
     GeekProfileResponse geekResponse =  await githubService.loadGeekProfile(username);
     return geekResponse.profile;
   }
