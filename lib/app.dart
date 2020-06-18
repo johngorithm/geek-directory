@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/navigation/app_routes.dart';
+import 'package:geekdirectory/view_models/app_model.dart';
+import 'package:provider/provider.dart';
 
 
 class App extends StatefulWidget {
@@ -12,15 +14,18 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Geek Directory',
-      theme: ThemeData.light().copyWith(
-        primaryColor: Palette.primary,
-        scaffoldBackgroundColor: Palette.secondary,
-        visualDensity: VisualDensity.adaptivePlatformDensity
+    return ChangeNotifierProvider(
+      create: (_) => AppModel(),
+      child: MaterialApp(
+        title: 'Geek Directory',
+        theme: ThemeData.light().copyWith(
+          primaryColor: Palette.primary,
+          scaffoldBackgroundColor: Palette.secondary,
+          visualDensity: VisualDensity.adaptivePlatformDensity
+        ),
+        initialRoute: '/',
+        onGenerateRoute: AppRoutes.getRoute,
       ),
-      initialRoute: '/',
-      onGenerateRoute: AppRoutes.getRoute,
     );
   }
 }

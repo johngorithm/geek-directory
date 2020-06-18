@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:geekdirectory/navigation/app_routes.dart';
+import 'package:geekdirectory/view_models/app_model.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -9,17 +10,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    AppModel appModel = Provider.of<AppModel>(context, listen: false);
+
+    /// The splash screen is the first screen the app to receive a navigation
+    /// capable context. Hence, a good point to set a navigator to our appModel
+    appModel.navigator = Navigator.of(context);
+    appModel.initDatabase();
 
     super.initState();
   }
 
-  @override
-  void didChangeDependencies() {
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.of(context).pushNamed(AppRoutes.tabbedHome);
-    });
-    super.didChangeDependencies();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
