@@ -5,10 +5,10 @@ import 'package:geekdirectory/services/service_api.dart';
 import 'package:geekdirectory/services/service_locator.dart';
 import 'package:geekdirectory/view_models/base_model.dart';
 
-class SignUpScreenModel extends BaseModel {
+class LoginScreenModel extends BaseModel {
   ServiceAPI api;
 
-  SignUpScreenModel({this.api}) {
+  LoginScreenModel({this.api}) {
     api ??= serviceLocator.get<ServiceAPI>();
   }
 
@@ -25,11 +25,9 @@ class SignUpScreenModel extends BaseModel {
     }
 
     try {
-      User newUser = await api.registerUser(_username, _password);
+      User newUser = await api.loginUser(_username, _password);
 
-      router.pushNamed(
-          AppRoutes.tabbedHome
-      );
+      router.pushNamed(AppRoutes.tabbedHome);
     } catch(e) {
       api.logger.severe('An error occured while trying to register a new user');
     }
@@ -67,7 +65,7 @@ class SignUpScreenModel extends BaseModel {
     return _isValid;
   }
 
-  void routeToLogin() {
-    router.pushNamed(AppRoutes.login);
+  void routeToRegister() {
+    router.pop();
   }
 }

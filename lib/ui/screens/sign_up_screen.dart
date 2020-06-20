@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
+import 'package:geekdirectory/ui/widgets/action_text.dart';
 import 'package:geekdirectory/ui/widgets/input_error_widget.dart';
 import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
 import 'package:geekdirectory/ui/widgets/one_action_top_bar_widgets.dart';
@@ -48,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _passwordFocusChangeListener() {
-    if (_usernameFocusNode.hasFocus) {
+    if (_passwordFocusNode.hasFocus) {
       _signUpModel.clearPasswordErrors();
     }
   }
@@ -113,6 +114,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               visible: model.passwordError != null,
                               child: ErrorTextWidget(model.passwordError),
                               replacement: SizedBox(),
+                            ),
+
+                            SizedBox(height: 24.0,),
+
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Row(
+                                children: <Widget>[
+                                  ParagraphTextWidget(
+                                    'Have an account?',
+                                  ),
+
+                                  ActionText(
+                                    onTap: _signUpModel.routeToLogin,
+                                    text: 'Login',
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         ),

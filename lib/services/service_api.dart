@@ -85,4 +85,9 @@ class ServiceAPI {
     // todo: firebase stuff here
     return null;
   }
+
+  Future<User> loginUser(String username, String password) async {
+    // todo: firebase stuff here
+    return null;
+  }
 }
