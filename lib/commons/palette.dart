@@ -10,6 +10,8 @@ class Palette {
   static const black = Colors.black;
   static const transparent = Colors.transparent;
   static const secondaryLight = Colors.blueAccent;
+  static const lightShadowGrey =  Color.fromRGBO(0, 0, 0, 0.05);
+  static const lighterShadowGrey =  Color.fromRGBO(0, 0, 0, 0.03);
 
   /// Text colors
   static const semiLightGrey = Color(0xFFBDBDBD);
@@ -20,10 +22,28 @@ class Palette {
   static const largeTextDarkGrey = Color(0xFF333333);
   static const lightGrey858585 = Color(0xFF858585);
 
+  /// Background
+  static const backgroundLightGrey = Color(0xFFF9F9F9);
+  static const backgroundLightSecondary = Color(0xFF56CCF2);
+
   static const appGradient = LinearGradient(
       colors: [Palette.primary, Palette.secondary],
       stops: [0.5, 1.0],
       begin: Alignment.topRight,
       end: Alignment.bottomLeft
+  );
+
+  static const redOrangeGradient = LinearGradient(
+      colors: [Color(0xFF79E4A6), Color(0xFF27AE60)],
+      stops: [0.4, 1.0],
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft);
+
+  static const elevatedShadow = Color(0xFFEFEFEF);
+
+  static const buttonShadow = BoxShadow(
+    color: lightShadowGrey,
+    offset: Offset(0, 2.0),
+    blurRadius: 2.0,
   );
 }

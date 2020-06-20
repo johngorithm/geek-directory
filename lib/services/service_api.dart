@@ -80,4 +80,9 @@ class ServiceAPI {
   Future<int> favoriteGeek(GeekDetail geekDetail) async {
     return db.geekStore.update(geekDetail);
   }
+
+  Future<User> registerUser(String username, String password) async {
+    // todo: firebase stuff here
+    return null;
+  }
 }
