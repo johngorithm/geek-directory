@@ -11,22 +11,23 @@ class UserStore with ChangeNotifier {
     _db = database;
   }
 
-  Future<User> insert(User user) async {
-    int id = await _db.insert(
+  Future<int> insert(User user) async {
+    // todo: verify insertion
+    int insertionId = await _db.insert(
       tableName,
       user.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-    user.id = id;
-    return user;
+
+    return insertionId;
   }
 
   Future<int> update(User user) async {
     int count = await _db.update(
       tableName,
       user.toMap(),
-      where: 'id = ?',
-      whereArgs: [user.id]
+      where: 'uuid = ?',
+      whereArgs: [user.uuid]
     );
 
     if (count < 1) {
@@ -43,7 +44,7 @@ class UserStore with ChangeNotifier {
   Future<User> getAuthenticatedUser() async {
     var records = await _db.query(
         tableName,
-        where: 'isAuthenticated = ?',
+        where: 'is_authenticated = ?',
         whereArgs: [1]
     );
 

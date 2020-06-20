@@ -57,15 +57,21 @@ class LocalDB {
         )''');
 
     await database.execute('''CREATE TABLE User (
-           id INTEGER PRIMARY KEY AUTOINCREMENT,
-           username TEXT NOT NULL,
-           profileImage TEXT,
-           hasCompletedOnboarding INTEGER,
-           isAuthenticated INTEGER
+           uuid TEXT PRIMARY KEY UNIQUE,
+           email TEXT NOT NULL,
+           name TEXT,
+           profile_image TEXT,
+           has_completed_onboarding INTEGER,
+           is_authenticated INTEGER
         )''');
   }
 
   FutureOr<void> _onUpgrade(database, oldVersion, newVersion) async {
     // TODO: Implement once version changes;
+  }
+
+  Future<void> clear() async {
+    await userStore.clear();
+    await geekStore.clear();
   }
 }

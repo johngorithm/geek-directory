@@ -27,10 +27,15 @@ class SignUpScreenModel extends BaseModel {
     try {
       User newUser = await api.registerUser(_username, _password);
 
-      router.pushNamed(
-          AppRoutes.tabbedHome
-      );
+      if (newUser != null) {
+        router.pushNamed(
+            AppRoutes.tabbedHome
+        );
+      }
+
+      // todo: snackbar here
     } catch(e) {
+      // todo: snackbar here
       api.logger.severe('An error occured while trying to register a new user');
     }
   }
@@ -62,7 +67,12 @@ class SignUpScreenModel extends BaseModel {
       // Invalid input
       passwordError = 'Password is required';
       _isValid = false;
+    } else if (password.length < 6) {
+      passwordError = 'Password must not be less than 6 characters';
+      _isValid = false;
     }
+
+
 
     return _isValid;
   }

@@ -1,30 +1,33 @@
 class User {
-  int id;
-  String username;
+  String uuid;
+  String email;
+  String name;
   String profileImage;
   bool hasCompletedOnboarding;
   bool isAuthenticated;
 
-  User({this.id, this.username, this.profileImage, this.hasCompletedOnboarding,
+  User({this.uuid, this.name, this.email, this.profileImage, this.hasCompletedOnboarding,
       this.isAuthenticated});
 
   factory User.fromJSON(Map<String, dynamic> data) {
     return User(
-      id: data['id'],
-      username: data['username'],
-      profileImage: data['profileImage'],
-      hasCompletedOnboarding: data['hasCompletedOnboarding'] == 1,
-      isAuthenticated: data['isAuthenticated'] == 1,
+      uuid: data['uuid'],
+      email: data['email'],
+      name: data['name'],
+      profileImage: data['profile_image'],
+      hasCompletedOnboarding: data['has_completed_onboarding'] == 1,
+      isAuthenticated: data['is_authenticated'] == 1,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'username': username,
-      'profileImage': profileImage,
-      'hasCompletedOnboarding': hasCompletedOnboarding,
-      'isAuthenticated': isAuthenticated ? 1 : 0,
+      'uuid': uuid,
+      'email': email,
+      'name': name,
+      'profile_image': profileImage,
+      'has_completed_onboarding': hasCompletedOnboarding,
+      'is_authenticated': isAuthenticated ? 1 : 0,
     };
   }
 }
