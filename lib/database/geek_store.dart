@@ -14,7 +14,7 @@ class GeekStore with ChangeNotifier {
   Future<GeekDetail> getByUsername(String username) async {
     var records = await _db.query(
         tableName,
-        where: 'username = ?',
+        where: 'login = ?',
         whereArgs: [username],
     );
 
@@ -25,27 +25,40 @@ class GeekStore with ChangeNotifier {
     return GeekDetail.fromJSON(records.first);
   }
 
+  Future<List<GeekDetail>> getFavorited() async {
+    var records = await _db.query(
+      tableName,
+      where: 'is_favorited = ?',
+      whereArgs: [1],
+    );
+
+    if ((records ?? []).length < 1) {
+      return null;
+    }
+
+    return records.map((entry) => GeekDetail.fromJSON(entry)).toList();
+  }
+
   Future<GeekDetail> insert(GeekDetail geekDetail) async {
-    int id = await _db.insert(
+    await _db.insert(
       tableName,
       geekDetail.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+      conflictAlgorithm: ConflictAlgorithm.replace
     );
-    geekDetail.id = id;
+
+    notifyListeners();
     return geekDetail;
   }
 
   Future<int> update(GeekDetail geekDetail) async {
+    print(geekDetail.toMap());
     int count = await _db.update(
         tableName,
         geekDetail.toMap(),
-        where: 'username = ?',
+        where: 'login = ?',
         whereArgs: [geekDetail.username]
     );
-
-    if (count < 1) {
-      return null;
-    }
+    notifyListeners();
     return count;
   }
 
@@ -55,7 +68,7 @@ class GeekStore with ChangeNotifier {
   }
 
   Future<void> clear() async {
-    await _db.delete("user");
+    await _db.delete(tableName);
     notifyListeners();
   }
 }

@@ -6,6 +6,7 @@ import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
 import 'package:geekdirectory/ui/widgets/geek_detail_layout.dart';
 import 'package:geekdirectory/view_models/geek_detail_screen_model.dart';
 import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 
 class GeekDetailScreen extends StatefulWidget {
@@ -31,26 +32,44 @@ class _GeekDetailScreenState extends State<GeekDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        brightness: Brightness.dark,
-        iconTheme: IconThemeData(color: Palette.white),
-        title: Text('${widget.geek.username}'),
-      ),
-      body: ChangeNotifierProvider(
-        create: (_) => _screenModel,
-        child: Consumer<GeekDetailScreenModel>(
-          builder: (context, model, child) {
-            if (model.busy) {
+    return ChangeNotifierProvider<GeekDetailScreenModel>(
+      create: (_) => _screenModel,
+      child: Scaffold(
+        appBar: AppBar(
+          brightness: Brightness.dark,
+          iconTheme: IconThemeData(color: Palette.white),
+          title: Text('${widget.geek.username}'),
+          actions: <Widget>[
+            Selector<GeekDetailScreenModel, bool>(
+              selector: (_, model) => model.isFavorited,
+              builder: (context, data, child) {
+                IconData iconData = Icons.favorite_border;
+                if (data) {
+                  iconData = Icons.favorite;
+                }
+                return IconButton(
+                  icon: Icon(
+                    iconData,
+                    color: Palette.white,
+                  ),
+                  onPressed: _screenModel.actionFavorite,
+                );
+              },
+            )
+          ],
+        ),
+        body: Selector<GeekDetailScreenModel, Tuple3<bool, String, GeekDetail>>(
+          selector: (_, model) => Tuple3(model.busy, model.screenMessage, model.geekDetail),
+          builder: (context, data, child) {
+            if (data.item1) {
               return BusyIndicator();
             }
 
-            if (model.screenMessage != null) {
-              return Text(model.screenMessage);
+            if (data.item2 != null) {
+              return Text(data.item2);
             }
 
-
-            return GeekDetailLayout(model.geekDetail);
+            return GeekDetailLayout(data.item3);
           },
         ),
       ),

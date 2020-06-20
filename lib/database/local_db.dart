@@ -42,18 +42,18 @@ class LocalDB {
 
   FutureOr<void> _onCreate(database, version) async {
     await database.execute('''CREATE TABLE ViewedGeeks (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          username TEXT NOT NULL,
+          id INTEGER NOT NULL,
           name TEXT,
-          followersCount INTEGER,
-          followingCount INTEGER,
+          login TEXT NOT NULL PRIMARY KEY UNIQUE,
+          followers INTEGER,
+          following INTEGER,
           bio TEXT,
           location TEXT,
           company TEXT,
-          avatarUrl TEXT NOT NULL,
-          publicGistCount INTEGER,
-          publicRepoCount INTEGER,
-          isFavorited INTEGER
+          avatar_url TEXT NOT NULL,
+          public_gists INTEGER,
+          public_repos INTEGER,
+          is_favorited INTEGER
         )''');
 
     await database.execute('''CREATE TABLE User (

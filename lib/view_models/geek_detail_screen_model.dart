@@ -14,6 +14,7 @@ class GeekDetailScreenModel extends BaseModel {
 
   GeekDetail geekDetail;
   String screenMessage;
+  bool isFavorited = false;
 
   GeekDetailScreenModel({this.api}) {
     api ??= serviceLocator.get<ServiceAPI>();
@@ -30,6 +31,7 @@ class GeekDetailScreenModel extends BaseModel {
         screenMessage = 'Unable to load data';
       } else {
         geekDetail = data;
+        isFavorited = data.isFavorited;
       }
     }  on GitHubStatusException catch(e) {
       screenMessage = e.message;
@@ -45,5 +47,13 @@ class GeekDetailScreenModel extends BaseModel {
     }
   }
 
+  void actionFavorite() async {
+    print(isFavorited);
+    isFavorited = !isFavorited;
 
+    geekDetail.isFavorited = isFavorited;
+    await api.db.geekStore.update(geekDetail);
+
+    notifyListeners();
+  }
 }

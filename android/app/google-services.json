@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "650186352649",
+    "firebase_url": "https://geekdirectory-4ac36.firebaseio.com",
+    "project_id": "geekdirectory-4ac36",
+    "storage_bucket": "geekdirectory-4ac36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650186352649:android:58c7e0b4f27aaece2830d8",
+        "android_client_info": {
+          "package_name": "com.johngorithm.geekdirectory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650186352649-32pgkhutk55iaij88et3q48nt55sf7lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs3Gbke3Ao_tBcMbKSPCDzPoUqVj93TRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650186352649-32pgkhutk55iaij88et3q48nt55sf7lr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "650186352649-b9ub49k92cf5bful9v24a2roi8b2q0ch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.johngorithm.geekdirectory"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

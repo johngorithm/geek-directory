@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:geekdirectory/database/local_db.dart';
 import 'package:geekdirectory/models/geek.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
@@ -9,8 +10,13 @@ import 'package:simple_logger/simple_logger.dart';
 
 class ServiceAPI {
   int userId;
+
+  @visibleForTesting
   GithubApiService githubService;
+
+  @visibleForTesting
   LocalDB db;
+
   SimpleLogger logger = SimpleLogger();
 
   ServiceAPI({this.githubService, this.db}) {
@@ -28,7 +34,17 @@ class ServiceAPI {
   }
 
   Future<GeekDetail> loadGeekProfile(String username) async {
+    var geek = await db.geekStore.getByUsername(username);
+
+    if (geek != null) {
+      return geek;
+    }
+
     GeekProfileResponse geekResponse =  await githubService.loadGeekProfile(username);
+    if (geekResponse.profile != null) {
+      await db.geekStore.insert(geekResponse.profile);
+    }
+
     return geekResponse.profile;
   }
 
@@ -36,8 +52,8 @@ class ServiceAPI {
 
   }
 
-  Future<List<Geek>> getFavoriteGeeks() async {
-    return null;
+  Future<List<GeekDetail>> getFavoriteGeeks() async {
+    return db.geekStore.getFavorited();
   }
 
   Future<void> getViewGeeks() async {

@@ -38,7 +38,7 @@ class GeekDetail {
         location: data['location'],
         company: data['company'],
         bio: data['bio'],
-        isFavorited: data['isFavorited'] == null ? false : (data['isFavorited'] == 1),
+        isFavorited: data['is_favorited'] == null ? false : (data['is_favorited'] == 1),
         publicGistCount: data['public_gists'],
         publicRepoCount: data['public_repos'],
     );
@@ -48,16 +48,16 @@ class GeekDetail {
     return {
       'id': id,
       'name': name,
-      'username': username,
-      'followersCount' : followersCount,
-      'followingCount' : followingCount,
-      'publicGistCount' : publicGistCount,
-      'publicRepoCount' : publicRepoCount,
-      'avatarUrl': avatarUrl,
+      'login': username,
+      'followers' : followersCount,
+      'following' : followingCount,
+      'public_gists' : publicGistCount,
+      'public_repos' : publicRepoCount,
+      'avatar_url': avatarUrl,
       'company': company,
       'bio': bio,
       'location': location,
-      'isFavorited': isFavorited ? 1 : 0,
+      'is_favorited': isFavorited ? 1 : 0,
     };
   }
 }
