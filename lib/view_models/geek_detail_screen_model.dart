@@ -48,11 +48,14 @@ class GeekDetailScreenModel extends BaseModel {
   }
 
   void actionFavorite() async {
-    print(isFavorited);
     isFavorited = !isFavorited;
 
     geekDetail.isFavorited = isFavorited;
-    await api.db.geekStore.update(geekDetail);
+    int updateCount = await api.favoriteGeek(geekDetail);
+    if (updateCount < 1) {
+      // todo: show a snackbar with a message
+      return;
+    }
 
     notifyListeners();
   }

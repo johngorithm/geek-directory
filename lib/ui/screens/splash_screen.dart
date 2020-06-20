@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/view_models/app_model.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.white,
       body: SafeArea(
         child: Container(
           child: Center(

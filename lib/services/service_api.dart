@@ -5,6 +5,7 @@ import 'package:geekdirectory/models/geek.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:geekdirectory/models/geek_profile_response.dart';
 import 'package:geekdirectory/models/geek_response.dart';
+import 'package:geekdirectory/models/user.dart';
 import 'package:geekdirectory/services/github_api_service.dart';
 import 'package:simple_logger/simple_logger.dart';
 
@@ -64,12 +65,8 @@ class ServiceAPI {
 
   }
 
-  Future<void> get hasCompletedOnboarding async {
-
-  }
-
-  Future<void> get authenticatedUser async {
-
+  Future<User> get authenticatedUser async {
+    return db.userStore.getAuthenticatedUser();
   }
 
   Future<void> getImageForUpload() async {
@@ -78,5 +75,9 @@ class ServiceAPI {
 
   Future<void> uploadProfileImage() async {
 
+  }
+
+  Future<int> favoriteGeek(GeekDetail geekDetail) async {
+    return db.geekStore.update(geekDetail);
   }
 }

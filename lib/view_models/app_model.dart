@@ -15,6 +15,7 @@ class AppModel extends BaseModel {
 
 
   Future<void> initDatabase() async {
+    await Future.delayed(Duration(seconds: 3));
     api.initDb().then(onDatabaseLoaded);
   }
 
@@ -26,7 +27,13 @@ class AppModel extends BaseModel {
   }
 
   void continueAppLaunch() async {
-    router.pushNamed(AppRoutes.tabbedHome);
+    var user = await api.authenticatedUser;
+    if (user != null) {
+      router.pushNamedAndRemoveAllBehind(AppRoutes.tabbedHome);
+      return;
+    }
+
+    router.pushNamedAndRemoveAllBehind(AppRoutes.getStarted);
   }
 
 }
