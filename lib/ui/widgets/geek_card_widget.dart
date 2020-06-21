@@ -17,7 +17,7 @@ class GeekCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Palette.primary,
+          color: Palette.white,
           borderRadius: BorderRadius.all(
             Radius.circular(5.0),
           )),
@@ -34,18 +34,20 @@ class GeekCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 80.0,
-                  width: 80.0,
+                  height: 95.0,
+                  width: 95.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
+                    color: Palette.white,
                     border: Border.all(
                         color: Colors.white,
-                        width: 2.0
+                        width: 6.0
                     ),
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: CachedNetworkImageProvider(geek.avatarUrl),
-                    ),
+                    boxShadow: [Palette.imageBorderShadow]
+                  ),
+                  child: CircleAvatar(
+                    radius: 47.5,
+                    backgroundImage: CachedNetworkImageProvider(geek.avatarUrl),
                   ),
                 ),
                 SizedBox(
@@ -55,7 +57,7 @@ class GeekCard extends StatelessWidget {
                   '${geek.username}',
                   style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.white
+                      color: Palette.largeTextDarkGrey
                   ),
                 ),
               ],

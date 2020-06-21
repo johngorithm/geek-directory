@@ -46,4 +46,11 @@ class Palette {
     offset: Offset(0, 2.0),
     blurRadius: 2.0,
   );
+
+  static const imageBorderShadow = BoxShadow(
+    color: lightShadowGrey,
+    offset: Offset(0, 2.0),
+    blurRadius: 4.0,
+    spreadRadius: 2
+  );
 }

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:geekdirectory/models/geek.dart';
 import 'package:geekdirectory/ui/widgets/geek_card_widget.dart';
 
-class UsersGrid extends StatelessWidget {
+class GeeksGrid extends StatelessWidget {
   final List<Geek> geeks;
 
-  UsersGrid(this.geeks);
+  GeeksGrid(this.geeks);
 
   @override
   Widget build(BuildContext context) {

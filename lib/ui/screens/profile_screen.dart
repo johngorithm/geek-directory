@@ -92,7 +92,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
 
   Widget get titleLayout => Container(
     padding: EdgeInsets.only(top: 60, bottom: 20, left: 20, right: 20),
-    child: OnboardingPageTitle(
+    child: PageTitleWiget(
       text: 'Profile',
       color: Palette.black,
     ),

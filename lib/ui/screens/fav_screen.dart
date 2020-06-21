@@ -51,7 +51,7 @@ class _FavScreenState extends State<FavScreen> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(top: 60, bottom: 20),
-                    child: OnboardingPageTitle(
+                    child: PageTitleWiget(
                       text: 'Favorites',
                       color: Palette.black,
                     ),

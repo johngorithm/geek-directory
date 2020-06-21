@@ -72,7 +72,7 @@ class _TabbedHomeState extends State<TabbedHome> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Palette.accentColor,
+          backgroundColor: Palette.primary,
           elevation: 4,
           isExtended: true,
           onPressed: onFabClicked,
@@ -137,6 +137,8 @@ class _TabbedHomeState extends State<TabbedHome> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(),
+          contentPadding: EdgeInsets.all(20.0),
           title: Text('App Exit'),
           content: Text('We hate to see you leave. Was that what you really want to do?'),
           actions: <Widget>[

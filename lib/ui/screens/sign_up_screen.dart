@@ -78,7 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(height: 28.0),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.0),
-                              child: OnboardingPageTitle(text: 'Join Us'),
+                              child: PageTitleWiget(text: 'Join Us'),
                             ),
                             SizedBox(height: 12.0),
                             Padding(
