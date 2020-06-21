@@ -21,7 +21,7 @@ class OneActionAppBar extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height,
-      color: Colors.white,
+      color: Palette.transparent,
       padding: EdgeInsets.only(left: 0),
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -81,12 +81,11 @@ class BackButton extends StatelessWidget {
         color: Colors.white,
         boxShadow: hasShadow ? [Palette.buttonShadow] : null,
       ),
-      margin: EdgeInsets.only(left: 15.0),
+      margin: EdgeInsets.only(left: 10.0),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           customBorder: CircleBorder(),
-          splashColor: Palette.secondary,
           onTap: onBackPress ?? () {
             if (Navigator.canPop(context)) {
               Navigator.of(context).pop();

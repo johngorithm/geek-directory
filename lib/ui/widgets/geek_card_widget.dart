@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/models/geek.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
+import 'package:geekdirectory/ui/widgets/round_image_widget.dart';
 import 'package:geekdirectory/view_models/home_screen_model.dart';
 import 'package:provider/provider.dart';
 
@@ -96,17 +97,7 @@ class GeekDetailCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  height: 75.0,
-                  width: 75.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: CachedNetworkImageProvider(geek.avatarUrl),
-                    ),
-                  ),
-                ),
+                RoundImage(geek.avatarUrl),
                 SizedBox(
                   height: 14.0,
                 ),

@@ -7,6 +7,6 @@ class Constants {
 
   static const kPrimaryDivider = Divider(
     height: 1.0,
-    color: Palette.secondaryLight,
+    color: Palette.semiLightGrey,
   );
 }

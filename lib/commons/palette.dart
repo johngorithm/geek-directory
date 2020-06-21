@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class Palette {
 
-  static const primary = Color(0xFF2D239F);
-  static const secondary = Color(0xFF313EBB);
+  static const primary = Color(0xFFFF2243);
+  static const secondary = Color(0xFFFF891C);
   static const accentColor = Colors.lightBlue;
   static const white = Colors.white;
   static const black = Colors.black;
@@ -24,6 +24,7 @@ class Palette {
 
   /// Background
   static const backgroundLightGrey = Color(0xFFF9F9F9);
+  static const backgroundGrey = Color(0xFFF5F5F5);
   static const backgroundLightSecondary = Color(0xFF56CCF2);
 
   static const appGradient = LinearGradient(

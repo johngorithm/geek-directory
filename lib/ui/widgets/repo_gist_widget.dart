@@ -13,16 +13,11 @@ class RepoGistWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-
       children: <Widget>[
         Expanded(
           child: ItemsCard(
-              margin: EdgeInsets.only(
-                left: 15.0,
-              ),
-              padding: EdgeInsets.only(
-                top: 30.0,
-                bottom: 30,
+              padding: EdgeInsets.symmetric(
+                vertical: 30.0,
               ),
               child: SocialMetricsCard(
                 field: 'Repos',
@@ -35,12 +30,8 @@ class RepoGistWidget extends StatelessWidget {
         ),
         Expanded(
           child: ItemsCard(
-              margin: EdgeInsets.only(
-                right: 15.0,
-              ),
-              padding: EdgeInsets.only(
-                top: 30.0,
-                bottom: 30,
+              padding: EdgeInsets.symmetric(
+                vertical: 30.0,
               ),
               child: SocialMetricsCard(
                 field: 'Gists',

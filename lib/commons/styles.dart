@@ -4,18 +4,18 @@ import 'package:geekdirectory/commons/palette.dart';
 
 class Styles {
   static const kDetailValueTextStyle = TextStyle(
-    color: Colors.white,
+    color: Palette.largeTextDarkGrey,
     fontSize: 16.0,
   );
 
   static const kDetailFieldTextStyle = TextStyle(
-    color: Palette.secondaryLight,
+    color: Palette.textSemiDarkGrey,
     fontSize: 16.0,
   );
 
   static const kPrimaryDivider = Divider(
     height: 1.0,
-    color: Palette.secondaryLight,
+    color: Palette.borderLightGrey,
   );
 
   static const kCardBoxShadow = [

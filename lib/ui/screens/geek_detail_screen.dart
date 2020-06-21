@@ -35,29 +35,6 @@ class _GeekDetailScreenState extends State<GeekDetailScreen> {
     return ChangeNotifierProvider<GeekDetailScreenModel>(
       create: (_) => _screenModel,
       child: Scaffold(
-        appBar: AppBar(
-          brightness: Brightness.dark,
-          iconTheme: IconThemeData(color: Palette.white),
-          title: Text('${widget.geek.username}'),
-          actions: <Widget>[
-            Selector<GeekDetailScreenModel, bool>(
-              selector: (_, model) => model.isFavorited,
-              builder: (context, data, child) {
-                IconData iconData = Icons.favorite_border;
-                if (data) {
-                  iconData = Icons.favorite;
-                }
-                return IconButton(
-                  icon: Icon(
-                    iconData,
-                    color: Palette.white,
-                  ),
-                  onPressed: _screenModel.actionFavorite,
-                );
-              },
-            )
-          ],
-        ),
         body: Selector<GeekDetailScreenModel, Tuple3<bool, String, GeekDetail>>(
           selector: (_, model) => Tuple3(model.busy, model.screenMessage, model.geekDetail),
           builder: (context, data, child) {
@@ -69,7 +46,7 @@ class _GeekDetailScreenState extends State<GeekDetailScreen> {
               return Text(data.item2);
             }
 
-            return GeekDetailLayout(data.item3);
+            return GeekDetailLayout(data.item3, _screenModel);
           },
         ),
       ),

@@ -18,18 +18,20 @@ class SocialMetricsCard extends StatelessWidget {
         children: <Widget>[
           Text(
             value,
-            style: valueStyle ?? TextStyle(
-              fontSize: 27.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+            style: valueStyle ??
+                TextStyle(
+                  fontSize: 27.0,
+                  fontWeight: FontWeight.bold,
+                  color: Palette.black,
+                ),
           ),
           Text(
             field,
-            style: fieldStyle ?? TextStyle(
-              fontSize: 14.0,
-              color: Palette.secondaryLight,
-            ),
+            style: fieldStyle ??
+                TextStyle(
+                  fontSize: 14.0,
+                  color: Palette.textSemiDarkGrey,
+                ),
           )
         ],
       ),

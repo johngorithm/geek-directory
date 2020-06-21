@@ -1,0 +1,34 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:geekdirectory/commons/palette.dart';
+
+class RoundImage extends StatelessWidget {
+  final String avatarUrl;
+  final double size;
+  final double borderWidth;
+
+  RoundImage(this.avatarUrl, {this.size = 95.0, this.borderWidth = 6.0});
+
+  @override
+  Widget build(BuildContext context) {
+    assert(size != null);
+    double _radius = size / 2.0;
+    return Container(
+      height: size,
+      width: size,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Palette.white,
+          border: Border.all(
+              color: Colors.white,
+              width: 6.0
+          ),
+          boxShadow: [Palette.imageBorderShadow]
+      ),
+      child: CircleAvatar(
+        radius: _radius,
+        backgroundImage: CachedNetworkImageProvider(avatarUrl),
+      ),
+    );
+  }
+}

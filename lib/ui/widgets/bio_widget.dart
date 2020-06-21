@@ -11,38 +11,36 @@ class BioWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ItemsCard(
-        margin: EdgeInsets.only(
-          left: 15.0,
-          right: 15.0,
-        ),
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.0,
-          vertical: 20.0,
-        ),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Text(
-                'Bio',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Palette.secondaryLight,
-                  fontSize: 20.0,
-                ),
-              ),
+    return ItemsCard(
+      margin: EdgeInsets.only(
+        left: 15.0,
+        right: 15.0,
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: 10.0,
+        vertical: 20.0,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'BIO',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 12.0,
+              fontWeight: FontWeight.w600,
             ),
-            Expanded(
-              flex: 3,
-              child: Text(
-                bio != null ? bio.trim() : Constants.kNotProvided,
-                textAlign: TextAlign.left,
-                style: Styles.kDetailValueTextStyle,
-              ),
-            )
-          ],
-        ),
+          ),
+          SizedBox(height: 10,),
+          Text(
+            bio != null ? bio.trim() : Constants.kNotProvided,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Palette.textSemiDarkGrey,
+            ),
+          )
+        ],
       ),
     );
   }

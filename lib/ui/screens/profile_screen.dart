@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/models/user.dart';
 import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
+import 'package:geekdirectory/ui/widgets/card_title_widget.dart';
+import 'package:geekdirectory/ui/widgets/emp_text.dart';
 import 'package:geekdirectory/ui/widgets/geek_card_widget.dart';
 import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
 import 'package:geekdirectory/view_models/profile_model.dart';
@@ -101,7 +103,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   Widget get headerLayout {
     String tempImage = 'https://movies-b26f.kxcdn.com/wp-content/uploads/2017/03/bossbaby_4-1024x1024.jpg';
     return Container(
-      height: 150,
+      height: 130,
       decoration: BoxDecoration(
         color: Palette.white,
         borderRadius: BorderRadius.circular(5.0)
@@ -115,11 +117,28 @@ class _ProfileLayoutState extends State<ProfileLayout> {
               border: Border.all(color: Palette.white, width: 3),
               shape: BoxShape.circle
             ),
-            child: CircleAvatar(
-              backgroundColor: Palette.white,
-              backgroundImage: CachedNetworkImageProvider(widget.user.profileImage ?? tempImage),
-              onBackgroundImageError: (_, __) {},
-              radius: 48,
+            child: Stack(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundColor: Palette.white,
+                  backgroundImage: CachedNetworkImageProvider(widget.user.profileImage ?? tempImage),
+                  onBackgroundImageError: (_, __) {},
+                  radius: 48,
+                ),
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    margin: EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Palette.white),
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
 
@@ -130,13 +149,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('ACCOUNT'),
+                CardTitle('ACCOUNT'),
                 SizedBox(height: 5.0,),
-                Text(widget.user.email, style: TextStyle(
-                  color: Palette.largeTextDarkGrey,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20.0
-                ),),
+                EmphasisText(widget.user.email),
               ],
             ),
           )
@@ -156,7 +171,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('COLOR MODE'),
+          CardTitle('COLOR MODE'),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,7 +203,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(left: 20.0),
-            child: Text('VIEWED GEEKS'),
+            child: CardTitle('VIEWED GEEKS'),
           ),
           SizedBox(height: 10.0,),
 
@@ -222,7 +237,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text('FAVORITES'),
+        CardTitle('FAVORITES'),
         SizedBox(height: 10,),
         Row(
           mainAxisSize: MainAxisSize.max,

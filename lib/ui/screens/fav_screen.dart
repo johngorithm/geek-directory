@@ -111,11 +111,7 @@ class FavCard extends StatelessWidget {
           ),
           SocialMetricsCard(
             value: '${geekDetail.followersCount}',
-            field: 'Follower',
-            valueStyle: TextStyle(
-                fontSize: 27.0,
-                fontWeight: FontWeight.bold,
-                color: Palette.black),
+            field: 'Followers',
             fieldStyle: TextStyle(color: Palette.textSemiDarkGrey),
           ),
           SizedBox(
@@ -124,10 +120,6 @@ class FavCard extends StatelessWidget {
           SocialMetricsCard(
             value: '${geekDetail.followingCount}',
             field: 'Following',
-            valueStyle: TextStyle(
-                fontSize: 27.0,
-                fontWeight: FontWeight.bold,
-                color: Palette.black),
             fieldStyle: TextStyle(color: Palette.textSemiDarkGrey),
           )
         ],
