@@ -59,8 +59,8 @@ class ServiceAPI {
     return db.geekStore.getFavorited();
   }
 
-  Future<void> getViewGeeks() async {
-
+  Future<List<GeekDetail>> getViewedGeeks() async {
+    return db.geekStore.all();
   }
 
   Future<void> finishOnboarding() async {
@@ -125,6 +125,10 @@ class ServiceAPI {
     }
 
     return appUser;
+  }
+
+  Future<User> getUserProfile() async {
+    return authenticatedUser;
   }
 
   Future<void> logOut() async {

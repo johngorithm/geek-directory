@@ -1,4 +1,6 @@
-class GeekDetail {
+import 'package:geekdirectory/models/geek.dart';
+
+class GeekDetail extends Geek{
   int id;
   int followersCount;
   int followingCount;
@@ -25,7 +27,7 @@ class GeekDetail {
         this.avatarUrl,
         this.isFavorited = false,
         this.publicGistCount,
-        this.publicRepoCount});
+        this.publicRepoCount}) : super(avatarUrl: avatarUrl, username: username);
 
   factory GeekDetail.fromJSON(Map<String, dynamic> data) {
     return GeekDetail(

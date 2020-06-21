@@ -4,8 +4,10 @@ import 'package:geekdirectory/commons/palette.dart';
 class SocialMetricsCard extends StatelessWidget {
   final String value;
   final String field;
+  final TextStyle valueStyle;
+  final TextStyle fieldStyle;
 
-  SocialMetricsCard({this.value, this.field});
+  SocialMetricsCard({this.value, this.field, this.valueStyle, this.fieldStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class SocialMetricsCard extends StatelessWidget {
         children: <Widget>[
           Text(
             value,
-            style: TextStyle(
+            style: valueStyle ?? TextStyle(
               fontSize: 27.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -24,7 +26,7 @@ class SocialMetricsCard extends StatelessWidget {
           ),
           Text(
             field,
-            style: TextStyle(
+            style: fieldStyle ?? TextStyle(
               fontSize: 14.0,
               color: Palette.secondaryLight,
             ),

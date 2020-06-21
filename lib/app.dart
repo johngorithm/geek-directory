@@ -20,7 +20,7 @@ class _AppState extends State<App> {
         title: 'Geek Directory',
         theme: ThemeData.light().copyWith(
           primaryColor: Palette.primary,
-          scaffoldBackgroundColor: Palette.secondary,
+          scaffoldBackgroundColor: Palette.backgroundLightGrey,
           visualDensity: VisualDensity.adaptivePlatformDensity
         ),
         initialRoute: '/',
