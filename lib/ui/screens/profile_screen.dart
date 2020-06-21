@@ -246,14 +246,21 @@ class _ProfileLayoutState extends State<ProfileLayout> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text('Count'),
-            Row(
-              children: <Widget>[
-                Icon(Icons.favorite,
-                  color: Palette.primary,
-                ),
-                SizedBox(width: 5,),
-                Text('${_profileModel.favCount}')
-              ],
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.0),
+                color: Palette.secondary.withOpacity(0.4)
+              ),
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.favorite,
+                    color: Palette.primary,
+                  ),
+                  SizedBox(width: 5,),
+                  Text('${_profileModel.favCount}')
+                ],
+              ),
             )
           ],
         )

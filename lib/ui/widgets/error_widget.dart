@@ -5,7 +5,7 @@ class ScreenErrorWidget extends StatelessWidget {
   final VoidCallback retryAction;
   final String message;
 
-  ScreenErrorWidget({this.retryAction, this.message});
+  ScreenErrorWidget({@required this.retryAction, this.message});
 
   @override
   Widget build(BuildContext context) {

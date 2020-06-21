@@ -21,7 +21,8 @@ class _AppState extends State<App> {
         theme: ThemeData.light().copyWith(
           primaryColor: Palette.primary,
           scaffoldBackgroundColor: Palette.backgroundGrey,
-          visualDensity: VisualDensity.adaptivePlatformDensity
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          canvasColor: Palette.secondary
         ),
         initialRoute: '/',
         onGenerateRoute: AppRoutes.getRoute,

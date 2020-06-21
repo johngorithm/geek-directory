@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
+import 'package:geekdirectory/ui/widgets/error_widget.dart';
 import 'package:geekdirectory/ui/widgets/fav_card.dart';
 import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
 import 'package:geekdirectory/view_models/fav_screen_model.dart';
@@ -40,8 +41,8 @@ class _FavScreenState extends State<FavScreen> {
               }
 
               if (model.screenMessage != null) {
-                return Center(
-                  child: Text(model.screenMessage),
+                return ScreenErrorWidget(
+                  message: model.screenMessage,
                 );
               }
 
