@@ -57,16 +57,39 @@ class ImageCaptionWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          height: imageSize,
-          width: imageSize,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Palette.white,
-            border: Border.all(width: 3.0, color: Colors.white),
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: CachedNetworkImageProvider(imageUrl),
-            ),
+          child: Stack(
+            overflow: Overflow.visible,
+            children: <Widget>[
+              Container(
+                height: imageSize,
+                width: imageSize,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Palette.white,
+                  border: Border.all(width: 3.0, color: Colors.white),
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: CachedNetworkImageProvider(imageUrl),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: -2,
+                right: -4,
+                child: Container(
+                  padding: EdgeInsets.all(2.0),
+                  decoration: BoxDecoration(
+                    color: Palette.white,
+                    shape: BoxShape.circle
+                  ),
+                  child: Icon(
+                    Icons.favorite,
+                    color: Palette.primary,
+                    size: 16,
+                  ),
+                ),
+              )
+            ],
           ),
         ),
         SizedBox(
