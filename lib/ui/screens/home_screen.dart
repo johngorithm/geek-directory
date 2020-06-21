@@ -3,6 +3,7 @@ import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
 import 'package:geekdirectory/ui/widgets/geek_grid_widget.dart';
 import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
+import 'package:geekdirectory/ui/widgets/error_widget.dart';
 import 'package:geekdirectory/view_models/home_screen_model.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
             }
 
             if (model.screenMessage != null) {
-              return Text(model.screenMessage);
+              return ScreenErrorWidget(
+                message: model.screenMessage,
+                retryAction: _homeModel.loadGeeks,
+              );
             }
 
             return Column(
@@ -60,7 +64,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Expanded(
-                  child: GeeksGrid(model.geeks),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5.0),
+                    child: GeeksGrid(model.geeks),
+                  ),
                 )
               ],
             );

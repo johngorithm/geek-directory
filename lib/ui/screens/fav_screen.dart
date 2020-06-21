@@ -56,14 +56,17 @@ class _FavScreenState extends State<FavScreen> {
                     ),
                   ),
                   Expanded(
-                    child: ListView.builder(
-                      itemCount: model.favoritedGeeks.length,
-                      padding: EdgeInsets.only(bottom: 100.0),
-                      itemBuilder: (context, index) {
-                        GeekDetail geekDetail =
-                            model.favoritedGeeks.elementAt(index);
-                        return FavCard(geekDetail);
-                      },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: ListView.builder(
+                        itemCount: model.favoritedGeeks.length,
+                        padding: EdgeInsets.only(bottom: 100.0),
+                        itemBuilder: (context, index) {
+                          GeekDetail geekDetail =
+                              model.favoritedGeeks.elementAt(index);
+                          return FavCard(geekDetail);
+                        },
+                      ),
                     ),
                   )
                 ],

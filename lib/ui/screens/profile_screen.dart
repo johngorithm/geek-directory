@@ -181,6 +181,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 selector: (context, model) => model.isDarkModeSelected,
                 builder: (context, isDarkModeSelected, child) => Switch(
                   value: isDarkModeSelected,
+                  activeColor: Palette.primary,
                   onChanged: (isOn) {
                     _profileModel.toggleDarkMode(isOn);
                   },
@@ -248,7 +249,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
             Row(
               children: <Widget>[
                 Icon(Icons.favorite,
-                  color: Palette.accentColor,
+                  color: Palette.primary,
                 ),
                 SizedBox(width: 5,),
                 Text('${_profileModel.favCount}')

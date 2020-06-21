@@ -97,7 +97,7 @@ class GeekDetailCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                RoundImage(geek.avatarUrl),
+                RoundImage(geek.avatarUrl, size: 85,),
                 SizedBox(
                   height: 14.0,
                 ),
