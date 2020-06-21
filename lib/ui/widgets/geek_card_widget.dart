@@ -80,7 +80,7 @@ class GeekDetailCard extends StatelessWidget {
       width: 140.0,
       margin: EdgeInsets.only(right: 15.0),
       decoration: BoxDecoration(
-          color: Palette.accentColor,
+          color: Palette.white,
           borderRadius: BorderRadius.all(
             Radius.circular(5.0),
           )),
@@ -88,20 +88,17 @@ class GeekDetailCard extends StatelessWidget {
         color: Palette.transparent,
         child: InkWell(
           onTap: onTap,
+          borderRadius: BorderRadius.circular(5.0),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 70.0,
-                  width: 70.0,
+                  height: 75.0,
+                  width: 75.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                        color: Colors.white,
-                        width: 2.0
-                    ),
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: CachedNetworkImageProvider(geek.avatarUrl),
@@ -115,7 +112,7 @@ class GeekDetailCard extends StatelessWidget {
                   '${geek.username}',
                   style: TextStyle(
                       fontSize: 15.0,
-                      color: Colors.white
+                      color: Palette.largeTextDarkGrey
                   ),
                 ),
               ],

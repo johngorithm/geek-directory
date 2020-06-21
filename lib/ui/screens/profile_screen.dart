@@ -4,6 +4,7 @@ import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/models/user.dart';
 import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
 import 'package:geekdirectory/ui/widgets/geek_card_widget.dart';
+import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
 import 'package:geekdirectory/view_models/profile_model.dart';
 import 'package:provider/provider.dart';
 
@@ -76,46 +77,53 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30.0),
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          contentLayout,
+          titleLayout,
+          headerLayout,
+          themeLayout,
+          viewedLayout,
+          favCountLayout
         ],
       )
     );
   }
 
-  Widget get contentLayout => Column(
-    children: <Widget>[
-      headerLayout,
-      themeLayout,
-      viewedLayout,
-      favCountLayout
-    ],
+  Widget get titleLayout => Container(
+    padding: EdgeInsets.only(top: 60, bottom: 20, left: 20, right: 20),
+    child: OnboardingPageTitle(
+      text: 'Profile',
+      color: Palette.black,
+    ),
   );
 
   Widget get headerLayout {
     String tempImage = 'https://movies-b26f.kxcdn.com/wp-content/uploads/2017/03/bossbaby_4-1024x1024.jpg';
     return Container(
       height: 150,
-      color: Palette.white,
+      decoration: BoxDecoration(
+        color: Palette.white,
+        borderRadius: BorderRadius.circular(5.0)
+      ),
       padding: EdgeInsets.symmetric(horizontal: 20.0),
+      margin: EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Palette.primary, width: 3),
+              border: Border.all(color: Palette.white, width: 3),
               shape: BoxShape.circle
             ),
             child: CircleAvatar(
               backgroundColor: Palette.white,
               backgroundImage: CachedNetworkImageProvider(widget.user.profileImage ?? tempImage),
               onBackgroundImageError: (_, __) {},
-              radius: 45,
+              radius: 48,
             ),
           ),
 
-          SizedBox(width: 20.0,),
+          SizedBox(width: 15.0,),
 
           Expanded(
             child: Column(
@@ -139,9 +147,12 @@ class _ProfileLayoutState extends State<ProfileLayout> {
 
   Widget get themeLayout {
     return Container(
-      color: Palette.white,
-      margin: EdgeInsets.only(top: 5.0),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      decoration: BoxDecoration(
+        color: Palette.white,
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      margin: EdgeInsets.only(top: 10.0, left: 20, right: 20),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -169,21 +180,24 @@ class _ProfileLayoutState extends State<ProfileLayout> {
 
   Widget get viewedLayout {
     return Container(
-      color: Palette.white,
-      margin: EdgeInsets.only(top: 5.0),
+      color: Palette.transparent,
+      margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('VIEWED GEEKS'),
-          SizedBox(height: 20.0,),
+          Padding(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text('VIEWED GEEKS'),
+          ),
+          SizedBox(height: 10.0,),
 
           SizedBox(
-            height: 140,
+            height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _profileModel.viewedGeeks.length,
+              padding: EdgeInsets.only(left: 20,),
               itemBuilder: (context, index) {
                 var geekDetail = _profileModel.viewedGeeks.elementAt(index);
 
@@ -199,16 +213,21 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   }
 
   Widget get favCountLayout => Container(
-    color: Palette.white,
-    margin: EdgeInsets.only(top: 5.0),
-    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    decoration: BoxDecoration(
+      color: Palette.white,
+      borderRadius: BorderRadius.circular(5.0),
+    ),
+    margin: EdgeInsets.symmetric(horizontal: 20),
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text('FAVORITES'),
+        SizedBox(height: 10,),
         Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text('Count'),
             Row(

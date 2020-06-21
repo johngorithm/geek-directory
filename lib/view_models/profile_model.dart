@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:geekdirectory/database/geek_store.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:geekdirectory/models/user.dart';
 import 'package:geekdirectory/navigation/profile_routes.dart';
@@ -19,6 +20,12 @@ class ProfileScreenModel extends BaseModel {
 
   ProfileScreenModel({this.api}) {
     api ??= serviceLocator.get<ServiceAPI>();
+    serviceLocator.get<GeekStore>()
+        .addListener(geekStoreDataChangeListener);
+  }
+
+  void geekStoreDataChangeListener() async {
+    getViewedGeeks();
   }
 
   Future<void> getProfileData() async {
@@ -41,6 +48,19 @@ class ProfileScreenModel extends BaseModel {
     }
   }
 
+  Future<void> getViewedGeeks() async {
+    try {
+      viewedGeeks = await api.getViewedGeeks();
+      if (viewedGeeks != null || viewedGeeks.isNotEmpty) {
+        favCount = viewedGeeks.where((item) => item.isFavorited).length;
+      }
+      notifyListeners();
+    } catch(e) {
+      // Fail silently
+      api.logger.severe('An error occured while fetching viewed geeks');
+    }
+  }
+
   void toggleDarkMode(bool value) {
     if (isDarkModeSelected == value) {
       return;
@@ -54,6 +74,13 @@ class ProfileScreenModel extends BaseModel {
   void actionSelectGeek(GeekDetail geek) {
     var screenArg = GeekDetailScreenArgument(geek);
     router.pushNamed(ProfileRoutes.viewedGeekDetail, arguments: screenArg);
+  }
+
+  @override
+  void dispose() {
+    serviceLocator.get<GeekStore>()
+        .removeListener(geekStoreDataChangeListener);
+    super.dispose();
   }
 
 }
