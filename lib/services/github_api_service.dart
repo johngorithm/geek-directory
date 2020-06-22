@@ -59,8 +59,8 @@ class GithubApiService {
 
   void throwOnFailureCodeException(http.Response response) {
 
-    _logger.fine('\n\n Server Response to ${response.request.url.path} ==> '
-        'StatusCode: ${response.statusCode}, Body: ${response.body} \n\n');
+    _logger.fine('\n\n Server Response to ${response.request.url.path} is '
+        'StatusCode: ${response.statusCode} \n\n');
 
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw GitHubStatusException(response);

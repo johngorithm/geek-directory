@@ -12,6 +12,7 @@ class ScreenErrorWidget extends StatelessWidget {
     assert(message != null);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
+      alignment: Alignment.center,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,

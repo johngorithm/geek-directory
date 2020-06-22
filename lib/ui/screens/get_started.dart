@@ -52,7 +52,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
 }
 
 class WelcomeImage extends StatelessWidget {
-  static const String imageUri = 'assets/for_geek_directory2.jpg';
+  static const String imageUri = 'assets/for_geek_directory3.jpg';
   static const double imageHeight = 177.0;
 
   @override

@@ -28,7 +28,7 @@ class GeekDetailScreenModel extends BaseModel {
     try {
       var data = await api.loadGeekProfile(username);
       if (data == null) {
-        screenMessage = 'Unable to load data';
+        screenMessage = 'Unable to $username\'s profile';
       } else {
         geekDetail = data;
         isFavorited = data.isFavorited;

@@ -31,7 +31,7 @@ class FavScreenModel extends BaseModel {
     try {
       var data = await api.getFavoriteGeeks();
       if (data == null) {
-        screenMessage = 'You are yet to favorite a geek';
+        screenMessage = 'You are yet to favorite \u2764 a geek';
       } else {
         favoritedGeeks = data;
       }

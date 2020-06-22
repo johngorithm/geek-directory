@@ -3,6 +3,7 @@ import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/models/geek.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
+import 'package:geekdirectory/ui/widgets/error_widget.dart';
 import 'package:geekdirectory/ui/widgets/geek_detail_layout.dart';
 import 'package:geekdirectory/view_models/geek_detail_screen_model.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,12 @@ class _GeekDetailScreenState extends State<GeekDetailScreen> {
             }
 
             if (data.item2 != null) {
-              return Text(data.item2);
+              return ScreenErrorWidget(
+                message: data.item2,
+                retryAction: () {
+                  _screenModel.loadGeekProfile(widget.geek.username);
+                },
+              );
             }
 
             return GeekDetailLayout(data.item3, _screenModel);
