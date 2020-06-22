@@ -20,13 +20,14 @@ class RoundImage extends StatelessWidget {
           shape: BoxShape.circle,
           color: Palette.white,
           border: Border.all(
-              color: Colors.white,
+              color: Palette.white,
               width: 6.0
           ),
           boxShadow: [Palette.imageBorderShadow]
       ),
       child: CircleAvatar(
         radius: _radius,
+        backgroundColor: Palette.secondary.withOpacity(0.4),
         backgroundImage: CachedNetworkImageProvider(avatarUrl),
       ),
     );

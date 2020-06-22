@@ -65,7 +65,9 @@ class GeekDetailLayout extends StatelessWidget {
             width: null,
             buttonConfig: ButtonConfig(
                 text: 'SHARE',
-                action: () {}
+                action: () {
+                  geekDetailModel.shareGeekProfile(data.username);
+                }
             ),
           ),
         )
@@ -105,7 +107,7 @@ class GeekDetailLayout extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.fill,
             image: AssetImage(
-              'assets/for_geek_directory1.jpg',
+              'assets/geek_banner.jpg',
             ),
           ),
         ),
@@ -195,7 +197,10 @@ class GeekDetailLayout extends StatelessWidget {
             field: 'Company',
             value: data.company ?? Constants.kNotProvided,
           ),
-          Constants.kPrimaryDivider,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Constants.kPrimaryDivider,
+          ),
           DetailCell(
             field: 'Location',
             value: data.location ?? Constants.kNotProvided,

@@ -59,4 +59,12 @@ class GeekDetailScreenModel extends BaseModel {
 
     notifyListeners();
   }
+
+  Future<void> shareGeekProfile(String username) async {
+    String text = 'Checkout this awesome developer '
+        '(@$username) at https://github.com/$username';
+    String subject = '@$username\'s Profile';
+
+    await api.shareGeekProfile(text, subject: subject);
+  }
 }

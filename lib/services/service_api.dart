@@ -9,6 +9,7 @@ import 'package:geekdirectory/models/geek_response.dart';
 import 'package:geekdirectory/models/user.dart';
 import 'package:geekdirectory/services/firebase_service.dart';
 import 'package:geekdirectory/services/github_api_service.dart';
+import 'package:geekdirectory/services/share_service.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 class ServiceAPI {
@@ -21,14 +22,18 @@ class ServiceAPI {
   FirebaseService firebaseService;
 
   @visibleForTesting
+  ShareService shareService;
+
+  @visibleForTesting
   LocalDB db;
 
   SimpleLogger logger = SimpleLogger();
 
-  ServiceAPI({this.githubService, this.db, this.firebaseService}) {
+  ServiceAPI({this.githubService, this.db, this.firebaseService, this.shareService}) {
     githubService ??= GithubApiService();
     firebaseService ??= FirebaseService();
     db ??= LocalDB();
+    shareService ??= ShareService();
   }
 
   Future<void> initDb() async {
@@ -71,13 +76,6 @@ class ServiceAPI {
     return db.userStore.getAuthenticatedUser();
   }
 
-  Future<void> getImageForUpload() async {
-
-  }
-
-  Future<void> uploadProfileImage() async {
-
-  }
 
   Future<int> favoriteGeek(GeekDetail geekDetail) async {
     return db.geekStore.update(geekDetail);
@@ -85,9 +83,9 @@ class ServiceAPI {
 
   Future<User> registerUser(String email, String password) async {
     FirebaseUser fbUser = await firebaseService.registerUser(email, password);
-    
+
     if (fbUser == null) return null;
-    
+
     User appUser = User(
       uuid: fbUser.uid,
       email: fbUser.email,
@@ -96,7 +94,7 @@ class ServiceAPI {
       hasCompletedOnboarding: true,
       isAuthenticated: true,
     );
-    
+
     int insertionId = await db.userStore.insert(appUser);
     if ((insertionId ?? 0) < 1) {
       return null;
@@ -137,4 +135,15 @@ class ServiceAPI {
     userId = null;
   }
 
+  Future<void> shareGeekProfile(String text, {String subject}) async {
+    await shareService.share(text, subject: subject);
+  }
+
+  Future<void> getImageForUpload() async {
+
+  }
+
+  Future<void> uploadProfileImage() async {
+
+  }
 }

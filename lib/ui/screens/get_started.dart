@@ -25,7 +25,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    HiImage(),
+                    WelcomeImage(),
                     BrandName('GeekApp'),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 58.0),
@@ -51,8 +51,8 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   }
 }
 
-class HiImage extends StatelessWidget {
-  static const String imageUri = 'assets/logoLarge.png';
+class WelcomeImage extends StatelessWidget {
+  static const String imageUri = 'assets/for_geek_directory2.jpg';
   static const double imageHeight = 177.0;
 
   @override
