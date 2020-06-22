@@ -81,7 +81,7 @@ class GeekDetailCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 140.0,
-      margin: EdgeInsets.only(right: 15.0),
+      margin: EdgeInsets.only(right: 7.0),
       decoration: BoxDecoration(
           color: Palette.white,
           borderRadius: BorderRadius.all(

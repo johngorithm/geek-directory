@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geekdirectory/models/geek.dart';
+import 'package:geekdirectory/ui/screens/geek_detail_screen.dart';
 import 'package:geekdirectory/ui/screens/get_started.dart';
 import 'package:geekdirectory/ui/screens/login_screen.dart';
 import 'package:geekdirectory/ui/screens/sign_up_screen.dart';
@@ -13,6 +15,7 @@ class AppRoutes {
   static const String signUp = '/signup';
   static const String login = '/login';
   static const String tabbedHome = '/tabbedHome';
+  static const String viewedGeekDetail = '/viewed-geek-detail';
 
   static Route getRoute(RouteSettings settings) {
     switch(settings.name) {
@@ -24,6 +27,9 @@ class AppRoutes {
         return _build(settings, LoginScreen());
       case tabbedHome:
         return _build(settings, TabbedHome());
+      case viewedGeekDetail:
+        GeekDetailScreenArgument arg = settings.arguments;
+        return _build(settings, GeekDetailScreen(arg.geek));
       case start:
       default:
         return _build(settings, SplashScreen());
@@ -37,3 +43,8 @@ class AppRoutes {
   }
 }
 
+class GeekDetailScreenArgument {
+  final Geek geek;
+
+  GeekDetailScreenArgument(this.geek);
+}

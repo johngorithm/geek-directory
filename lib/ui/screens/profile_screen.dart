@@ -5,8 +5,10 @@ import 'package:geekdirectory/models/user.dart';
 import 'package:geekdirectory/ui/widgets/busy_indicator.dart';
 import 'package:geekdirectory/ui/widgets/card_title_widget.dart';
 import 'package:geekdirectory/ui/widgets/emp_text.dart';
+import 'package:geekdirectory/ui/widgets/error_widget.dart';
 import 'package:geekdirectory/ui/widgets/geek_card_widget.dart';
 import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
+import 'package:geekdirectory/view_models/app_model.dart';
 import 'package:geekdirectory/view_models/profile_model.dart';
 import 'package:provider/provider.dart';
 
@@ -31,6 +33,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    var appModel = context.read<AppModel>();
+    profileModel.appModel = appModel;
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return  ChangeNotifierProvider<ProfileScreenModel>(
       create: (_) => profileModel,
@@ -42,7 +51,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             }
 
             if (model.screenMessage != null) {
-              return Text(model.screenMessage);
+              return ScreenErrorWidget(
+                message: model.screenMessage,
+                retryAction: profileModel.getProfileData,
+              );
             }
 
             return ProfileLayout(model.user);
@@ -58,6 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.dispose();
   }
 }
+
 
 class ProfileLayout extends StatefulWidget {
   final User user;
@@ -93,7 +106,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   }
 
   Widget get titleLayout => Container(
-    padding: EdgeInsets.only(top: 60, bottom: 20, left: 20, right: 20),
+    padding: EdgeInsets.only(top: 60, bottom: 10, left: 10, right: 10),
     child: PageTitleWiget(
       text: 'Profile',
       color: Palette.black,
@@ -109,7 +122,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
         borderRadius: BorderRadius.circular(5.0)
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      margin: EdgeInsets.symmetric(horizontal: 20.0),
+      margin: EdgeInsets.symmetric(horizontal: 10.0),
       child: Row(
         children: <Widget>[
           Container(
@@ -166,7 +179,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
         color: Palette.white,
         borderRadius: BorderRadius.circular(5.0),
       ),
-      margin: EdgeInsets.only(top: 10.0, left: 20, right: 20),
+      margin: EdgeInsets.only(top: 10.0, left: 10, right: 10),
       padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,7 +216,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 20.0),
+            padding: EdgeInsets.only(left: 10.0),
             child: CardTitle('VIEWED GEEKS'),
           ),
           SizedBox(height: 10.0,),
@@ -213,7 +226,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _profileModel.viewedGeeks.length,
-              padding: EdgeInsets.only(left: 20,),
+              padding: EdgeInsets.only(left: 10,),
               itemBuilder: (context, index) {
                 var geekDetail = _profileModel.viewedGeeks.elementAt(index);
 
@@ -233,7 +246,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
       color: Palette.white,
       borderRadius: BorderRadius.circular(5.0),
     ),
-    margin: EdgeInsets.symmetric(horizontal: 20),
+    margin: EdgeInsets.symmetric(horizontal: 10),
     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -253,9 +266,11 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 color: Palette.secondary.withOpacity(0.4)
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.favorite,
                     color: Palette.primary,
+                    size: 18.0,
                   ),
                   SizedBox(width: 5,),
                   Text('${_profileModel.favCount}')

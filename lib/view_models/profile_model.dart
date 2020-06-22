@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:geekdirectory/database/geek_store.dart';
 import 'package:geekdirectory/models/geek_detail.dart';
 import 'package:geekdirectory/models/user.dart';
-import 'package:geekdirectory/navigation/profile_routes.dart';
+import 'package:geekdirectory/navigation/app_routes.dart';
 import 'package:geekdirectory/services/service_api.dart';
 import 'package:geekdirectory/services/service_locator.dart';
+import 'package:geekdirectory/view_models/app_model.dart';
 import 'package:geekdirectory/view_models/base_model.dart';
 
 class ProfileScreenModel extends BaseModel {
@@ -17,6 +18,7 @@ class ProfileScreenModel extends BaseModel {
   List<GeekDetail> viewedGeeks;
   bool isDarkModeSelected = false;
   int favCount = 0;
+  AppModel appModel;
 
   ProfileScreenModel({this.api}) {
     api ??= serviceLocator.get<ServiceAPI>();
@@ -73,7 +75,7 @@ class ProfileScreenModel extends BaseModel {
 
   void actionSelectGeek(GeekDetail geek) {
     var screenArg = GeekDetailScreenArgument(geek);
-    router.pushNamed(ProfileRoutes.viewedGeekDetail, arguments: screenArg);
+    appModel.router.pushNamed(AppRoutes.viewedGeekDetail, arguments: screenArg);
   }
 
   @override
