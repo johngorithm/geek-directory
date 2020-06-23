@@ -12,10 +12,7 @@ class BioWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ItemsCard(
-      margin: EdgeInsets.only(
-        left: 15.0,
-        right: 15.0,
-      ),
+      margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
       padding: EdgeInsets.symmetric(
         horizontal: 10.0,
         vertical: 20.0,

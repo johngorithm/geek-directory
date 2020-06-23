@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/palette.dart';
 
-class PageTitleWiget extends StatelessWidget {
+class PageTitleWidget extends StatelessWidget {
   final String text;
   final Color color;
 
-  PageTitleWiget({@required this.text, this.color = Palette.primary});
+  PageTitleWidget({@required this.text, this.color = Palette.primary});
 
   @override
   Widget build(BuildContext context) {

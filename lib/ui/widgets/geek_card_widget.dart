@@ -41,21 +41,22 @@ class GeekCard extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Palette.white,
                     border: Border.all(
-                        color: Colors.white,
-                        width: 6.0
+                        color: Palette.white,
+                        width: 4.0
                     ),
                     boxShadow: [Palette.imageBorderShadow]
                   ),
-                  child: CircleAvatar(
-                    radius: 47.5,
-                    backgroundImage: CachedNetworkImageProvider(geek.avatarUrl),
+                  child: RoundImage(
+                    geek.avatarUrl,
+                    size: 90,
+                    borderWidth: 4,
                   ),
                 ),
                 SizedBox(
                   height: 15.0,
                 ),
                 Text(
-                  '${geek.username}',
+                  '@${geek.username}',
                   style: TextStyle(
                       fontSize: 15.0,
                       color: Palette.largeTextDarkGrey

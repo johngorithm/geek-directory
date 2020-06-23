@@ -40,6 +40,8 @@ class ProfileScreenModel extends BaseModel {
       viewedGeeks = await api.getViewedGeeks();
       if (viewedGeeks != null || viewedGeeks.isNotEmpty) {
         favCount = viewedGeeks.where((item) => item.isFavorited).length;
+      } else {
+        viewedGeeks = [];
       }
     } catch(e) {
       screenMessage = 'Something went wrong, mind trying again';
@@ -74,7 +76,7 @@ class ProfileScreenModel extends BaseModel {
 
 
   void actionSelectGeek(GeekDetail geek) {
-    var screenArg = GeekDetailScreenArgument(geek);
+    var screenArg = GeekDetailScreenArgument(geek, isFullScreen: true);
     appModel.router.pushNamed(AppRoutes.viewedGeekDetail, arguments: screenArg);
   }
 

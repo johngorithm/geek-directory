@@ -33,7 +33,7 @@ class _FavScreenState extends State<FavScreen> {
       body: ChangeNotifierProvider<FavScreenModel>(
         create: (_) => _favScreenModel,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: Consumer<FavScreenModel>(
             builder: (context, model, child) {
               if (model.busy) {
@@ -43,6 +43,7 @@ class _FavScreenState extends State<FavScreen> {
               if (model.screenMessage != null) {
                 return ScreenErrorWidget(
                   message: model.screenMessage,
+                  retryAction: _favScreenModel.getFavoritedGeeks,
                 );
               }
 
@@ -50,8 +51,8 @@ class _FavScreenState extends State<FavScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(top: 60, bottom: 20),
-                    child: PageTitleWiget(
+                    padding: EdgeInsets.only(top: 60, bottom: 10),
+                    child: PageTitleWidget(
                       text: 'Favorites',
                       color: Palette.black,
                     ),

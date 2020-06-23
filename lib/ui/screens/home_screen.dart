@@ -39,39 +39,41 @@ class _HomeScreenState extends State<HomeScreen> {
     return ChangeNotifierProvider<HomeScreenModel>(
       create: (_) => _homeModel,
       child: Scaffold(
-        body: Consumer<HomeScreenModel>(
-          builder: (context, model, child) {
-            if (model.busy) {
-              return BusyIndicator();
-            }
+        body: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10.0),
+          child: Consumer<HomeScreenModel>(
+            builder: (context, model, child) {
+              if (model.busy) {
+                return BusyIndicator();
+              }
 
-            if (model.screenMessage != null) {
-              return ScreenErrorWidget(
-                message: model.screenMessage,
-                retryAction: _homeModel.loadGeeks,
+              if (model.screenMessage != null) {
+                return ScreenErrorWidget(
+                  message: model.screenMessage,
+                  retryAction: _homeModel.loadGeeks,
+                );
+              }
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 60, bottom: 10),
+                    child: PageTitleWidget(
+                      text: 'Home </>',
+                      color: Palette.black,
+                    ),
+                  ),
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: GeeksGrid(model.geeks),
+                    ),
+                  )
+                ],
               );
-            }
-
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 60, bottom: 20),
-                  margin: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: PageTitleWiget(
-                    text: 'Home </>',
-                    color: Palette.black,
-                  ),
-                ),
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5.0),
-                    child: GeeksGrid(model.geeks),
-                  ),
-                )
-              ],
-            );
-          },
+            },
+          ),
         ),
       ),
     );

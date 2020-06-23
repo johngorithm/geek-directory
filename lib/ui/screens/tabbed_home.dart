@@ -13,6 +13,7 @@ class TabbedHome extends StatefulWidget {
 class _TabbedHomeState extends State<TabbedHome> {
   List<TabConfig> get tabs => [_homeTab, _favTab, _profile];
   int _currentTabIndex = 0;
+  bool _isFabActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +46,12 @@ class _TabbedHomeState extends State<TabbedHome> {
             onTap: handleTabChange,
             elevation: 0.0,
             selectedItemColor: Palette.primary,
-            unselectedItemColor: Colors.black54,
+            unselectedItemColor: Palette.semiDarkGrey,
             backgroundColor: Colors.transparent,
             showUnselectedLabels: true,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.code),
                   title: Text('Home')
               ),
 
@@ -72,12 +73,13 @@ class _TabbedHomeState extends State<TabbedHome> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Palette.primary,
+          backgroundColor: _isFabActive ? Palette.primary : Palette.white,
           elevation: 4,
           isExtended: true,
           onPressed: onFabClicked,
           child: Icon(
             Icons.favorite,
+            color: _isFabActive ? Palette.white : Palette.semiDarkGrey,
           ),
         ),
       ),
@@ -88,6 +90,7 @@ class _TabbedHomeState extends State<TabbedHome> {
     if (_currentTabIndex != 1) {
       setState(() {
         _currentTabIndex = 1;
+        _isFabActive = true;
       });
     }
   }
@@ -102,6 +105,7 @@ class _TabbedHomeState extends State<TabbedHome> {
     if (index != _currentTabIndex) {
       setState(() {
         _currentTabIndex = index;
+        _isFabActive = false;
       });
     }
   }

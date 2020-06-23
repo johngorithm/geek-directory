@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(height: 28.0),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 20.0),
-                              child: PageTitleWiget(text: 'Login'),
+                              child: PageTitleWidget(text: 'Login'),
                             ),
                             SizedBox(height: 12.0),
                             Padding(

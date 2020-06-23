@@ -29,22 +29,31 @@ class AppRoutes {
         return _build(settings, TabbedHome());
       case viewedGeekDetail:
         GeekDetailScreenArgument arg = settings.arguments;
-        return _build(settings, GeekDetailScreen(arg.geek));
+        return _build(settings, GeekDetailScreen(arg.geek), isFullScreen: arg.isFullScreen);
       case start:
       default:
         return _build(settings, SplashScreen());
     }
   }
 
-  static _build(RouteSettings settings, Widget screen) {
-    return MaterialPageRoute(builder: (context) {
-      return screen;
-    });
+  static _build(RouteSettings settings, Widget screen, {bool isFullScreen = false}) {
+    return MaterialPageRoute(
+      builder: (context) => screen,
+      fullscreenDialog: isFullScreen,
+    );
   }
 }
 
-class GeekDetailScreenArgument {
+class GeekDetailScreenArgument extends AppRouteBaseArgument {
   final Geek geek;
+  bool isFullScreen;
 
-  GeekDetailScreenArgument(this.geek);
+  GeekDetailScreenArgument(this.geek, {this.isFullScreen = false})
+      : super(isFullScreenDialog: isFullScreen);
+}
+
+class AppRouteBaseArgument {
+  bool isFullScreenDialog;
+
+  AppRouteBaseArgument({this.isFullScreenDialog = false});
 }

@@ -107,7 +107,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
 
   Widget get titleLayout => Container(
     padding: EdgeInsets.only(top: 60, bottom: 10, left: 10, right: 10),
-    child: PageTitleWiget(
+    child: PageTitleWidget(
       text: 'Profile',
       color: Palette.black,
     ),
@@ -221,7 +221,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
           ),
           SizedBox(height: 10.0,),
 
-          SizedBox(
+          _profileModel.viewedGeeks.isNotEmpty ? SizedBox(
             height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -235,7 +235,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 });
               },
             ),
-          )
+          ) : Text('Your viewed Geeks will show here')
         ],
       ),
     );

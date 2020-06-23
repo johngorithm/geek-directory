@@ -35,8 +35,8 @@ class GeekDetailLayout extends StatelessWidget {
               socialMetricsLayout,
               infoLayout,
               repoGistLayout,
-              ctaLayout,
               bioLayout,
+              ctaLayout,
             ],
           ),
         ),
@@ -46,7 +46,7 @@ class GeekDetailLayout extends StatelessWidget {
     );
   }
 
-  Widget get ctaLayout => ItemsCard(
+  Widget get ctaLayout => Container(
     margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
     child: Row(
       children: <Widget>[
@@ -144,7 +144,7 @@ class GeekDetailLayout extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
-                                CardTitle(data.name),
+                                CardTitle('${data.name ?? 'username'}'),
                                 SizedBox(height: 5.0,),
                                 EmphasisText('@${data.username}')
                               ],

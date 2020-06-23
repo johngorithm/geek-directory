@@ -11,7 +11,7 @@ class GeeksGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        padding: EdgeInsets.only(top: 10.0, bottom: 130.0, left: 10.0, right: 10.0),
+        padding: EdgeInsets.only(top: 10.0, bottom: 130.0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10.0,
