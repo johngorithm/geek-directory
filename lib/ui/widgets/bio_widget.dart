@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geekdirectory/commons/constants.dart';
 import 'package:geekdirectory/commons/palette.dart';
-import 'package:geekdirectory/commons/styles.dart';
 import 'package:geekdirectory/ui/widgets/item_card.dart';
 
 class BioWidget extends StatelessWidget {

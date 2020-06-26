@@ -14,7 +14,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Container(
           child: Column(
@@ -52,12 +52,15 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
 }
 
 class WelcomeImage extends StatelessWidget {
-  static const String imageUri = 'assets/for_geek_directory3.jpg';
+  static const String imageUri = 'assets/fire-image.png';
   static const double imageHeight = 177.0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.circle
+      ),
       margin: EdgeInsets.only(bottom: 25.0),
       height: imageHeight,
       width: double.infinity,

@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:geekdirectory/commons/palette.dart';
 
 class ParagraphTextWidget extends StatelessWidget {
   final String text;
@@ -10,7 +9,7 @@ class ParagraphTextWidget extends StatelessWidget {
 
   ParagraphTextWidget(this.text,
       {this.textAlign = TextAlign.center,
-        this.color = Palette.lightGrey858585,
+        this.color,
         this.fontSize = 15.0});
 
   @override
@@ -22,7 +21,7 @@ class ParagraphTextWidget extends StatelessWidget {
         style: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.normal,
-          color: color,
+          color: color ?? Theme.of(context).textTheme.caption.color,
         ),
       ),
     );

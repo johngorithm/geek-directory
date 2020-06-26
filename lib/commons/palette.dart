@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 
 class Palette {
 
-  static const primary = Color(0xFFFF2243);
-  static const secondary = Color(0xFFFF891C);
+  static const primary = secondary;
+  static const secondary = Color(0xFFFF5733);
+
+  static const darkModeForeground = Color(0xFF322209);
+  static const darkModelBackground = Color(0xFF402912);
+
+
   static const accentColor = Colors.lightBlue;
   static const white = Colors.white;
   static const black = Colors.black;
@@ -33,13 +38,6 @@ class Palette {
       begin: Alignment.topRight,
       end: Alignment.bottomLeft
   );
-
-  static const redOrangeGradient = LinearGradient(
-      colors: [Color(0xFF79E4A6), Color(0xFF27AE60)],
-      stops: [0.4, 1.0],
-      begin: Alignment.topRight,
-      end: Alignment.bottomLeft);
-
   static const elevatedShadow = Color(0xFFEFEFEF);
 
   static const buttonShadow = BoxShadow(

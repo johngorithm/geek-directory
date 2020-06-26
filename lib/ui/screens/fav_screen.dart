@@ -43,7 +43,6 @@ class _FavScreenState extends State<FavScreen> {
               if (model.screenMessage != null) {
                 return ScreenErrorWidget(
                   message: model.screenMessage,
-                  retryAction: _favScreenModel.getFavoritedGeeks,
                 );
               }
 

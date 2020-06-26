@@ -16,17 +16,38 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => AppModel(),
-      child: MaterialApp(
-        title: 'Geek Directory',
-        theme: ThemeData.light().copyWith(
-          primaryColor: Palette.primary,
-          scaffoldBackgroundColor: Palette.backgroundGrey,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          canvasColor: Palette.secondary
-        ),
-        initialRoute: '/',
-        onGenerateRoute: AppRoutes.getRoute,
-      ),
+      child: Selector<AppModel, ThemeMode>(
+        selector: (_, model) => model.themeMode,
+        builder: (context, _themeMode, child) {
+          return MaterialApp(
+            title: 'Geek Directory',
+            theme: ThemeData(
+                primaryColor: Palette.primary,
+                scaffoldBackgroundColor: Palette.backgroundGrey,
+                visualDensity: VisualDensity.adaptivePlatformDensity,
+                canvasColor: Palette.secondary,
+                cardColor: Palette.white,
+                textTheme: TextTheme(
+                  caption: TextStyle(
+                    color: Palette.textSemiDarkGrey,
+                  ),
+                )
+            ),
+            darkTheme: ThemeData(
+                scaffoldBackgroundColor: Palette.darkModelBackground,
+                cardColor: Palette.darkModeForeground,
+                textTheme: TextTheme(
+                  caption: TextStyle(
+                    color: Palette.white,
+                  ),
+                )
+            ),
+            themeMode: _themeMode,
+            initialRoute: '/',
+            onGenerateRoute: AppRoutes.getRoute,
+          );
+        },
+      )
     );
   }
 }

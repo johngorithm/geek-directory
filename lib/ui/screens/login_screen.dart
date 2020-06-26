@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/ui/widgets/action_text.dart';
 import 'package:geekdirectory/ui/widgets/input_error_widget.dart';
 import 'package:geekdirectory/ui/widgets/onboard_page_title.dart';
@@ -57,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: ChangeNotifierProvider<LoginScreenModel>(
         create: (_) => _loginModel,
         child: Consumer<LoginScreenModel>(
@@ -86,15 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: ParagraphTextWidget(
                                 pagePara,
                                 textAlign: TextAlign.left,
-                                color: Palette.lightGrey858585,
                               ),
                             ),
                             SizedBox(height: 25.0),
                             TextAreaWidget(
                               controller: _usernameController,
-                              hintText: "Enter username",
-                              label: 'USERNAME',
+                              hintText: "Enter your email",
+                              label: 'EMAIL',
                               focusNode: _usernameFocusNode,
+                              inputType: TextInputType.emailAddress,
                             ),
                             Visibility(
                               visible: model.usernameError != null,
@@ -109,6 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               hintText: "Enter password",
                               label: 'PASSWORD',
                               focusNode: _passwordFocusNode,
+                              obscureText: true,
                             ),
                             Visibility(
                               visible: model.passwordError != null,

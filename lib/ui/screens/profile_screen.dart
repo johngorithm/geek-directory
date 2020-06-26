@@ -197,6 +197,8 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                   activeColor: Palette.primary,
                   onChanged: (isOn) {
                     _profileModel.toggleDarkMode(isOn);
+                    var appModel = context.read<AppModel>();
+                    appModel.themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
                   },
                 ),
               )
@@ -235,7 +237,15 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 });
               },
             ),
-          ) : Text('Your viewed Geeks will show here')
+          ) : Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Text(
+                'Your viewed Geeks will show up here',
+              style: TextStyle(
+                color: Palette.textSemiDarkGrey,
+              ),
+            ),
+          )
         ],
       ),
     );

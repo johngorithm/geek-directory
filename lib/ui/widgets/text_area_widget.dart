@@ -11,11 +11,13 @@ class TextAreaWidget extends StatelessWidget {
   final TextEditingController controller;
   final double horizontalMargin;
   final FocusNode focusNode;
+  final bool obscureText;
 
   TextAreaWidget(
       {@required this.controller,
         this.horizontalMargin = 20.0,
         this.hintText,
+        this.obscureText = false,
         @required this.label,
         this.marginBottom, this.focusNode,
         this.inputType = TextInputType.text});
@@ -44,6 +46,7 @@ class TextAreaWidget extends StatelessWidget {
               focusNode: focusNode,
               textAlignVertical: TextAlignVertical.top,
               keyboardType: inputType,
+              obscureText: obscureText,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(left: 10, top: 12, bottom: 12),
@@ -57,7 +60,7 @@ class TextAreaWidget extends StatelessWidget {
             ),
           ),
           Container(
-            color: Colors.white,
+            color: Theme.of(context).scaffoldBackgroundColor,
             padding: EdgeInsets.all(3),
             margin: EdgeInsets.only(left: 20),
             child: Text(

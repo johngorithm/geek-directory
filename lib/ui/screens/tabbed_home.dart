@@ -73,13 +73,13 @@ class _TabbedHomeState extends State<TabbedHome> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
         floatingActionButton: FloatingActionButton(
-          backgroundColor: _isFabActive ? Palette.primary : Palette.white,
+          backgroundColor: _isFabActive ? Palette.primary : Palette.semiDarkGrey,
           elevation: 4,
           isExtended: true,
           onPressed: onFabClicked,
           child: Icon(
             Icons.favorite,
-            color: _isFabActive ? Palette.white : Palette.semiDarkGrey,
+            color: Palette.white,
           ),
         ),
       ),

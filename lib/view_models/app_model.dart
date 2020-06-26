@@ -1,4 +1,5 @@
 
+import 'package:flutter/material.dart';
 import 'package:geekdirectory/navigation/app_routes.dart';
 import 'package:geekdirectory/services/service_api.dart';
 import 'package:geekdirectory/services/service_locator.dart';
@@ -7,7 +8,17 @@ import 'package:simple_logger/simple_logger.dart';
 
 class AppModel extends BaseModel {
   ServiceAPI api;
+  ThemeMode _themeMode;
 
+
+  set themeMode(ThemeMode value) {
+    if (_themeMode == value) return;
+
+    _themeMode = value;
+    notifyListeners();
+  }
+
+  ThemeMode get themeMode => _themeMode;
 
   AppModel({this.api}) {
     api ??= serviceLocator.get<ServiceAPI>();
