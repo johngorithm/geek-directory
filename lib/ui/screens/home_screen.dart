@@ -59,10 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(top: 60, bottom: 10),
-                    child: PageTitleWidget(
-                      text: 'Home </>',
-                      color: Palette.black,
-                    ),
+                    child: PageTitleWidget(text: 'Home </>'),
                   ),
                   Expanded(
                     child: ClipRRect(

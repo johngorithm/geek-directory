@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geekdirectory/commons/palette.dart';
 import 'package:geekdirectory/commons/styles.dart';
 
 class DetailCell extends StatelessWidget {
@@ -20,7 +21,7 @@ class DetailCell extends StatelessWidget {
           Expanded(
             child: Text(
               field,
-              style: Styles.kDetailFieldTextStyle,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
           Expanded(
@@ -33,7 +34,10 @@ class DetailCell extends StatelessWidget {
                   value,
                   maxLines: 1,
                   overflow: TextOverflow.fade,
-                  style: Styles.kDetailValueTextStyle,
+                  style: TextStyle(
+                    color: Palette.textSemiDarkGrey,
+                    fontSize: 15.0
+                  ),
                 ),
               ),
             ),

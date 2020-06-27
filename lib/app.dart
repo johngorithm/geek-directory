@@ -25,10 +25,17 @@ class _AppState extends State<App> {
                 primaryColor: Palette.primary,
                 scaffoldBackgroundColor: Palette.backgroundGrey,
                 visualDensity: VisualDensity.adaptivePlatformDensity,
-                canvasColor: Palette.secondary,
+                canvasColor: Palette.black,
                 cardColor: Palette.white,
+                brightness: Brightness.light,
+                dividerColor: Palette.semiLightGrey,
                 textTheme: TextTheme(
+                  bodyText1: TextStyle(
+                    color: Palette.black,
+                    fontSize: 16.0,
+                  ),
                   caption: TextStyle(
+                    fontSize: 15.0,
                     color: Palette.textSemiDarkGrey,
                   ),
                 )
@@ -36,13 +43,21 @@ class _AppState extends State<App> {
             darkTheme: ThemeData(
                 scaffoldBackgroundColor: Palette.darkModelBackground,
                 cardColor: Palette.darkModeForeground,
+                brightness: Brightness.dark,
+                canvasColor: Palette.white,
+                dividerColor: Palette.white,
                 textTheme: TextTheme(
+                  bodyText1: TextStyle(
+                    color: Palette.white,
+                    fontSize: 15.0,
+                  ),
                   caption: TextStyle(
+                    fontSize: 15.0,
                     color: Palette.white,
                   ),
                 )
             ),
-            themeMode: _themeMode,
+            themeMode: _themeMode ?? ThemeMode.system,
             initialRoute: '/',
             onGenerateRoute: AppRoutes.getRoute,
           );

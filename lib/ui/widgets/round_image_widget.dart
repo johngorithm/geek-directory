@@ -21,7 +21,7 @@ class RoundImage extends StatelessWidget {
           color: Palette.white,
           border: Border.all(
               color: Palette.white,
-              width: 6.0
+              width: 5.0
           ),
           boxShadow: [Palette.imageBorderShadow]
       ),

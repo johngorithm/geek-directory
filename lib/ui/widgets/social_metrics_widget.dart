@@ -22,7 +22,7 @@ class SocialMetricsCard extends StatelessWidget {
                 TextStyle(
                   fontSize: 27.0,
                   fontWeight: FontWeight.bold,
-                  color: Palette.black,
+                  color: Theme.of(context).canvasColor,
                 ),
           ),
           Text(

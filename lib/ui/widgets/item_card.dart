@@ -14,7 +14,7 @@ class ItemsCard extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        color: Palette.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.all(
           Radius.circular(5.0),
         ),

@@ -16,7 +16,9 @@ class FavCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
       margin: EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
-          color: Palette.white, borderRadius: BorderRadius.circular(5.0)),
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(5.0),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -25,10 +27,7 @@ class FavCard extends StatelessWidget {
               username: geekDetail.username,
               imageUrl: geekDetail.avatarUrl,
               imageSize: 70.0,
-              textStyle: TextStyle(
-                color: Palette.black,
-                fontSize: 15.0,
-              ),
+              textStyle: Theme.of(context).textTheme.caption,
             ),
           ),
           SocialMetricsCard(

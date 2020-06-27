@@ -108,8 +108,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   Widget get titleLayout => Container(
     padding: EdgeInsets.only(top: 60, bottom: 10, left: 10, right: 10),
     child: PageTitleWidget(
-      text: 'Profile',
-      color: Palette.black,
+      text: 'Profile'
     ),
   );
 
@@ -118,7 +117,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
     return Container(
       height: 130,
       decoration: BoxDecoration(
-        color: Palette.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(5.0)
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -176,7 +175,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   Widget get themeLayout {
     return Container(
       decoration: BoxDecoration(
-        color: Palette.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(5.0),
       ),
       margin: EdgeInsets.only(top: 10.0, left: 10, right: 10),
@@ -253,7 +252,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
 
   Widget get favCountLayout => Container(
     decoration: BoxDecoration(
-      color: Palette.white,
+      color: Theme.of(context).cardColor,
       borderRadius: BorderRadius.circular(5.0),
     ),
     margin: EdgeInsets.symmetric(horizontal: 10),

@@ -41,7 +41,7 @@ class GeekCard extends StatelessWidget {
                     color: Palette.white,
                     border: Border.all(
                         color: Palette.white,
-                        width: 4.0
+                        width: 6.0
                     ),
                     boxShadow: [Palette.imageBorderShadow]
                   ),
@@ -56,10 +56,7 @@ class GeekCard extends StatelessWidget {
                 ),
                 Text(
                   '@${geek.username}',
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      color: Palette.largeTextDarkGrey
-                  ),
+                  style: Theme.of(context).textTheme.caption,
                 ),
               ],
             ),
@@ -83,7 +80,7 @@ class GeekDetailCard extends StatelessWidget {
       width: 140.0,
       margin: EdgeInsets.only(right: 7.0),
       decoration: BoxDecoration(
-          color: Palette.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.all(
             Radius.circular(5.0),
           )),
@@ -103,10 +100,7 @@ class GeekDetailCard extends StatelessWidget {
                 ),
                 Text(
                   '${geek.username}',
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      color: Palette.largeTextDarkGrey
-                  ),
+                  style: Theme.of(context).textTheme.caption,
                 ),
               ],
             ),

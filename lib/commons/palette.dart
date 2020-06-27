@@ -6,8 +6,8 @@ class Palette {
   static const primary = secondary;
   static const secondary = Color(0xFFFF5733);
 
-  static const darkModeForeground = Color(0xFF322209);
-  static const darkModelBackground = Color(0xFF402912);
+  static const darkModeForeground = Color(0xFF172442);
+  static const darkModelBackground = Color(0xFF131A29);
 
 
   static const accentColor = Colors.lightBlue;

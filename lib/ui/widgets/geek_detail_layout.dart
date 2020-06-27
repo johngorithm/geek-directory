@@ -33,7 +33,7 @@ class GeekDetailLayout extends StatelessWidget {
             children: <Widget>[
               SizedBox(height: 45.0),
               socialMetricsLayout,
-              infoLayout,
+              infoLayout(context),
               repoGistLayout,
               bioLayout,
               ctaLayout,
@@ -41,7 +41,7 @@ class GeekDetailLayout extends StatelessWidget {
           ),
         ),
 
-        headerLayout
+        headerLayout(context),
       ],
     );
   }
@@ -98,7 +98,7 @@ class GeekDetailLayout extends StatelessWidget {
     );
   }
 
-  Widget get headerLayout {
+  Widget headerLayout(BuildContext context) {
     return Container(
         height: 180.0,
         padding: EdgeInsets.only(top: 35.0),
@@ -130,7 +130,7 @@ class GeekDetailLayout extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                        color: Palette.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.all(
                           Radius.circular(5.0),
                         ),
@@ -187,7 +187,7 @@ class GeekDetailLayout extends StatelessWidget {
     );
   }
 
-  Widget get infoLayout {
+  Widget infoLayout(BuildContext context) {
     return ItemsCard(
       margin: EdgeInsets.only(left: 10.0, right: 10, bottom: 15),
       padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -199,7 +199,10 @@ class GeekDetailLayout extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: Constants.kPrimaryDivider,
+            child: Divider(
+              height: 1.0,
+              color: Theme.of(context).dividerColor,
+            ),
           ),
           DetailCell(
             field: 'Location',

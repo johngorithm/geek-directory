@@ -6,7 +6,7 @@ class PageTitleWidget extends StatelessWidget {
   final String text;
   final Color color;
 
-  PageTitleWidget({@required this.text, this.color = Palette.primary});
+  PageTitleWidget({@required this.text, this.color });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class PageTitleWidget extends StatelessWidget {
           style: TextStyle(
             fontSize: 27.0,
             fontWeight: FontWeight.w300,
-            color: color,
+            color: color ?? Theme.of(context).canvasColor,
           )),
     );
   }
