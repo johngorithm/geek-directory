@@ -1,6 +1,6 @@
-# geekdirectory
+# Geekdirectory
 
-A new Flutter application.
+Demo App for my Flutter Lagos FlutterDay talk
 
 ## Getting Started
 
